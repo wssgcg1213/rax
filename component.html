@@ -25,62 +25,10 @@
   <div id="react-content" style="overflow: auto">
   </div>
   <script type="text/javascript" src="//g.alicdn.com/third/react/15.1.0/??react-with-addons.js,react-dom.js"></script>
-  <script src="/common.js"></script>
-  <script src="/index.js"></script>
   <script src="/js/modernizr.custom.js"></script>
   <script src="/js/hovereffect.js"></script>
-  <script src="/js/prism.js" defer></script>
-  <script>
-KISSY.use('ajax,node,dom,ua,overlay,kg/effect-popup/1.0.0/index,kg/effect-popup/1.0.0/index.css', function(S,IO,Node,D,UA,Overlay, EffectPopup){
-
-    var $ = Node.all;
-
-    // demo的浮层展示方式
-    var showDemoOverlay = function(url){
-        if(!window.demoOverlay){
-            window.demoOverlay = new EffectPopup({
-                width: '950',
-                height: '90%',
-                afterOpen: function(){
-
-                    var vw = D.viewportWidth();
-                    var vh = D.viewportHeight();
-                    $('body')
-                        .addClass('body-notmove')
-                        .css({
-                            width: vw,
-                            height: vh
-                        });
-                },
-                afterClose: function(){
-                    $('body')
-                        .removeClass('body-notmove')
-                        .css({
-                            width: 'auto',
-                            height: 'auto'
-                        });
-                }
-            });
-        }
-        var iframe = '<iframe id="iframe" src="'+url+'" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>'
-        window.demoOverlay.open('<div class="iframebox">'+iframe+'</div>');
-    }
-    $(document).delegate('click', '.popup_back', function(e){
-        e.halt();
-        window.demoOverlay.close();
-    })
-    $(document).delegate('click', '.J_ShowGuideBtn', function(e){
-        e.halt();
-        var $target = $(e.currentTarget);
-        var demoUrl = './404';
-        if($target.hasClass('local-demo')){
-            demoUrl = $target.attr('data-href');
-        }
-        showDemoOverlay(demoUrl);
-    })
-
-});
-  </script>
+  <script src="/common.js"></script>
+  <script src="/index.js"></script>
 </body>
 
 </html>
