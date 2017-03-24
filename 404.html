@@ -20,6 +20,7 @@
 </div>
 <script>
   (function() {
+    window.RAX_API_ORIGIN = 'https://api.zeroling.com/rax';
     var oldOpen = XMLHttpRequest.prototype.open;
     XMLHttpRequest.prototype.open = function(method, url, isAsync){
       var reg = new RegExp('^' + location.origin + '/api');
