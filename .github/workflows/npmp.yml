@@ -1,5 +1,4 @@
-name: Node.js Package
-
+name: Rax NPM Deployment
 on:
   pull_request:
     branches:
@@ -7,21 +6,8 @@ on:
   push:
     branches:
       - master
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 8
-      - run: npm i
-      - run: npm run setup
-      - run: npm run build
-
-  publish-npm:
-    needs: build
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -29,6 +15,8 @@ jobs:
         with:
           node-version: 8
           registry-url: https://registry.npmjs.org/
-      - run: npm publish packages/rax-cli
+      - run: npm i
+      - run: npm run setup
+      - run: npm publish packages/rax
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
